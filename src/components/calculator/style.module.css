@@ -1,0 +1,17 @@
+.container{
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.result{
+    color: white;
+    background-color: #232323;
+    padding : 10px;
+    font-size: 30px;
+    display: flex;
+    width: 20%;
+    justify-content: center;
+    
+}

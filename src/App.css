@@ -36,3 +36,7 @@
     transform: rotate(360deg);
   }
 }
+.calc{
+  background-color: #282c34;
+  color: white;
+}

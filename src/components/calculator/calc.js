@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
 import Button from '../button/button';
+import Style from './style.module.css'
 
 const Calc = () => {
     const [result, setResult] = useState(0);
     const [prevVal, setPreviousVal] = useState(0);
-    const [currentVal, setCurrentVal] = useState(0);
     const [operator , setOperator] = useState('')
 
     const onClick = (event) => {
+        
         if (event === '+') {
             setPreviousVal(parseInt(result));
-            setResult(0);
+            setResult('');
             setOperator('plus');
         } else if (event === '-') {
             setPreviousVal(result);
@@ -26,6 +27,9 @@ const Calc = () => {
             setOperator('divide');
         } else if( event==='='){
             evaluate();
+  
+        } else if(event === 'clear'){
+            setResult(0);
         } 
         else {
             setResult(result + event);
@@ -34,16 +38,29 @@ const Calc = () => {
 
     const evaluate= () => {
         if(operator==='plus'){
-//            console.log(prevVal);
-            setCurrentVal(result);
-           // setResult('');
-            setResult(parseInt(prevVal)+parseInt(currentVal))
+            
+            setResult(prevVal+parseInt(result));
+        } else if(operator==='minus'){
+            setResult(prevVal-parseInt(result));
         }
-        console.log(typeof(prevVal),typeof(currentVal))
+        else if(operator==='multiply'){
+            setResult(prevVal*parseInt(result));
+        }
+        else if(operator==='divide'){
+            setResult(prevVal/parseInt(result));
+        }
+        
+            
+            
+        
+        
     }
     return (
-        <div>
+        <div className={Style.container}>
+            <div className={Style.result}>
             {result}
+            </div>
+            
             <Button onClick={onClick} />
         </div>
     )
